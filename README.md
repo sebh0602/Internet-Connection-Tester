@@ -5,3 +5,5 @@
 	I use it to monitor Linux server uptime (assuming Google's server is up too of course). For this purpose I just have it run in the background, and check in on it every once in a while.
 	
 	To quit, press return.
+	If you want to add parameters, run:
+	filename.py successes failures best seconds
