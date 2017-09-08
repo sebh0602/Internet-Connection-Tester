@@ -2,6 +2,7 @@
 import socket
 import time
 import os
+import sys
 import threading
 
 def run():
@@ -33,6 +34,8 @@ def connectionTester():
 	global best_consec
 	best_consec=0
 
+	parse_arguments()
+	
 	while True:
 		try:
 			s=socket.socket()
@@ -52,6 +55,39 @@ def connectionTester():
 		display()
 		time.sleep(1)
 
+		
+def parse_arguments():
+	args=sys.argv
+	l=len(args)-1
+	
+	if l>=1: #L==one
+		try:
+			global successes
+			successes=int(args[1])
+		except ValueError:
+			pass
+			
+	if l>=2:
+		try:
+			global failures
+			failures=int(args[2])
+		except ValueError:
+			pass
+			
+	if l>=3:
+		try:
+			global best_consec
+			best_consec=int(args[3])
+		except ValueError:
+			pass
+			
+	if l>=4:
+		try:
+			global start_time
+			start_time-=float(args[4])
+		except ValueError:
+			pass
+		
 def display():
 	total=successes+failures
 
