@@ -55,10 +55,10 @@ def display():
 
         print("Internet connection tester\n" + "-"*26 + "\n")
         print("Total attempts:",total)
-        print("Successes:     ",successful_attempts,round(successful_attempts/total*100,2),"%")
-        print("Failures:      ",failures,round(failures/total*100,2),"%")
+        print("Successes:     ",successful_attempts,round(successful_attempts/total*100,4),"%")
+        print("Failures:      ",failures,round(failures/total*100,4),"%")
         print("Best:          ",best_consec)
         print()
-        print("Running for:   ",round(time.time()-start_time,2),"seconds")
+        print("Running for:   ",round(time.time()-start_time,1),"seconds")
 
 run()
