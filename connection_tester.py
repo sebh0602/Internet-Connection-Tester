@@ -86,7 +86,7 @@ class speedtestThread(threading.Thread):
 		try:
 			with open("results_speedtest.txt","r+") as file:
 				f = file.read()
-				file.write(f + txt)
+				file.write(txt)
 		except:
 			pass
 
