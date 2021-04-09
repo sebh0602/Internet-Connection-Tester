@@ -143,13 +143,14 @@ def display():
 	txt = ""
 	txt += "Internet connection tester\n" + "-"*26 + "\n"
 	txt += "\nTotal attempts: " + str(total)
-	txt += "\nSuccesses:      " + str(successes) + " (" +str(round(successes/total*100,4)) + " %)"
-	txt += "\nFailures:       " + str(failures) + " (" +str(round(failures/total*100,4)) + " %)"
+	txt += "\nSuccesses:      " + str(successes) + " (" +str(round(successes/total*100,2)) + " %)"
+	txt += "\nFailures:       " + str(failures) + " (" +str(round(failures/total*100,2)) + " %)"
 	txt += "\nBest consec.:   " + str(best_consec)
 	txt += "\n"
-	txt += "\nAvg. ping:      " + str(round(ping_sum/successes,1)) + "ms"
-	txt += "\nWorst ping:     " + str(worst_ping) + "ms"
-	txt += "\n"
+	if ping_sum > 0:
+		txt += "\nAvg. ping:      " + str(round(ping_sum/successes,1)) + "ms"
+		txt += "\nWorst ping:     " + str(worst_ping) + "ms"
+		txt += "\n"
 	txt += "\nRunning for:    " + str(round(time.time()-start_time,1)) + " seconds"
 
 	print(txt)
@@ -191,7 +192,7 @@ class speedtestThread(threading.Thread):
 			txt += "\n{0} mbps up".format(up)
 			txt += "\n\n"
 		except:
-			txt = "Speedtest error\n\n"
+			txt = dateTime() + ": Speedtest error\n\n"
 			error("s")
 
 		try:
